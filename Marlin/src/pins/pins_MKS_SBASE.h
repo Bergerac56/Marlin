@@ -31,7 +31,7 @@
 #define BOARD_NAME        "MKS SBASE"
 #define BOARD_WEBSITE_URL "https://github.com/makerbase-mks/MKS-SBASE"
 
-#define LED_PIN            P1_18   // Used as a status indicator
+#define LED_PIN            -1  // Used as a status indicator
 #define LED2_PIN           P1_19
 #define LED3_PIN           P1_20
 #define LED4_PIN           P1_21
