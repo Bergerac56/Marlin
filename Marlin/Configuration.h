@@ -734,7 +734,7 @@
 //
 // Use Junction Deviation instead of traditional Jerk Limiting
 //
-//#define JUNCTION_DEVIATION
+//#define JUNCTION_DEVIATION  // TEST TEST TEST
 #if ENABLED(JUNCTION_DEVIATION)
   #define JUNCTION_DEVIATION_MM 0.02  // (mm) Distance from real junction edge
 #endif
@@ -763,7 +763,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-//#define S_CURVE_ACCELERATION
+//#define S_CURVE_ACCELERATION //( TEST TEST)
 
 //===========================================================================
 //============================= Z Probe Options =============================
