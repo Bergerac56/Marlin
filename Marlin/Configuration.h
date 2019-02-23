@@ -81,7 +81,7 @@
 // build by the user have been successfully uploaded into firmware.
 #define STRING_CONFIG_H_AUTHOR "O. de Broqueville" // Who made the changes.
 #define SHOW_BOOTSCREEN
-#define STRING_SPLASH_LINE1 "V2 BF148 20-02-2019" // will be shown during bootup in line 1
+#define STRING_SPLASH_LINE1 "V2 BF149 23-02-2019" // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 "www.xerus.be"      // will be shown during bootup in line 2
 
 /**
@@ -145,7 +145,7 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "JacBot OdB V2 BF148  " // Jacbot
+#define CUSTOM_MACHINE_NAME "JacBot OdB V2 BF149  " // Jacbot
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -763,7 +763,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-//#define S_CURVE_ACCELERATION //( TEST TEST)
+#define S_CURVE_ACCELERATION //( TEST TEST)
 
 //===========================================================================
 //============================= Z Probe Options =============================
