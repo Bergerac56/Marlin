@@ -979,7 +979,7 @@
  * See http://marlinfw.org/docs/features/lin_advance.html for full instructions.
  * Mention @Sebastianv650 on GitHub to alert the author of any issues.
  */
-// #define LIN_ADVANCE  // TEST TEST TEST
+#define LIN_ADVANCE  // TEST TEST TEST
 #if ENABLED(LIN_ADVANCE)
   #define LIN_ADVANCE_K 1.02     // Unit: mm compression per 1mm/s (0.22 = default) extruder speed
   //#define LA_DEBUG          // If enabled, this will generate debug information output over USB.
