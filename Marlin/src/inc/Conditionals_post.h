@@ -431,7 +431,7 @@
 /**
  * Default hotend offsets, if not defined
  */
-#if HOTENDS > 1
+#if HAS_HOTEND_OFFSET
   #ifndef HOTEND_OFFSET_X
     #define HOTEND_OFFSET_X { 0 } // X offsets for each extruder
   #endif
@@ -1169,6 +1169,10 @@
 /**
  * Up to 3 PWM fans
  */
+#ifndef FAN_INVERTING
+  #define FAN_INVERTING false
+#endif
+
 #if HAS_FAN2
   #define FAN_COUNT 3
 #elif HAS_FAN1
@@ -1180,14 +1184,14 @@
 #endif
 
 #if HAS_FAN0
-  #define WRITE_FAN(v) WRITE(FAN_PIN, v)
+  #define WRITE_FAN(v) WRITE(FAN_PIN, (v) ^ FAN_INVERTING)
   #define WRITE_FAN0(v) WRITE_FAN(v)
 #endif
 #if HAS_FAN1
-  #define WRITE_FAN1(v) WRITE(FAN1_PIN, v)
+  #define WRITE_FAN1(v) WRITE(FAN1_PIN, (v) ^ FAN_INVERTING)
 #endif
 #if HAS_FAN2
-  #define WRITE_FAN2(v) WRITE(FAN2_PIN, v)
+  #define WRITE_FAN2(v) WRITE(FAN2_PIN, (v) ^ FAN_INVERTING)
 #endif
 #define WRITE_FAN_N(n, v) WRITE_FAN##n(v)
 
@@ -1211,6 +1215,13 @@
   #error "FAN_MAX_PWM must be a value from 0 to 255."
 #elif FAN_MIN_PWM > FAN_MAX_PWM
   #error "FAN_MIN_PWM must be less than or equal to FAN_MAX_PWM."
+#endif
+
+/**
+ * FAST PWM FAN Settings
+ */
+#if ENABLED(FAST_PWM_FAN) && !defined(FAST_PWM_FAN_FREQUENCY)
+  #define FAST_PWM_FAN_FREQUENCY ((F_CPU) / (2 * 255 * 1)) // Fan frequency default
 #endif
 
 /**
@@ -1533,9 +1544,9 @@
 #endif
 
 /**
- * VIKI2, miniVIKI, AZSMZ_12864, and MKS_12864OLED_SSD1306 require DOGLCD_SCK and DOGLCD_MOSI to be defined.
+ * Make sure DOGLCD_SCK and DOGLCD_MOSI are defined.
  */
-#if ENABLED(VIKI2) || ENABLED(miniVIKI) || ENABLED(AZSMZ_12864) || ENABLED(MKS_12864OLED_SSD1306)
+#if ENABLED(DOGLCD)
   #ifndef DOGLCD_SCK
     #define DOGLCD_SCK  SCK_PIN
   #endif
