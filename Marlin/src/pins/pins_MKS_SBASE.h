@@ -168,9 +168,9 @@
  * - The onboard SD card can be used and optionally shared with a PC via USB.
  */
 
-//#define LPC_SD_CUSTOM_CABLE // Use a custom cable to access the SD
+//#define LPC_SD_CUSTOM_CABLE // Use a custom cable to access the SD Pour utiliser le lecteur SD LCD
 //#define LPC_SD_LCD          // Marlin uses the SD drive attached to the LCD
-#define LPC_SD_ONBOARD        // Marlin uses the SD drive attached to the control board
+#define LPC_SD_ONBOARD        // Marlin uses the SD drive attached to the control board Pour tout mettre sur la SD interne
 
 #if ENABLED(LPC_SD_CUSTOM_CABLE)
 

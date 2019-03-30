@@ -1032,7 +1032,7 @@
  */
 #define LIN_ADVANCE  // TEST TEST TEST
 #if ENABLED(LIN_ADVANCE)
-  //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
+  //#define EXTRA_LIN_ADVANCE_K // Enable for second  ance constants
   #define LIN_ADVANCE_K 1.02     // Unit: mm compression per 1mm/s (0.22 = default) extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
 #endif
