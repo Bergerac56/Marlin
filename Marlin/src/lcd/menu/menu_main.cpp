@@ -259,7 +259,7 @@ void menu_main() {
     // Autostart
     //
     #if ENABLED(MENU_ADDAUTOSTART)
-      if (!busy) MENU_ITEM(function, MSG_AUTOSTART, card.beginautostart);
+      if (!busy) MENU_ITEM(function, MSG_AUTOSTAR T, card.beginautostart);
     #endif
 
     if (card_detected) {
