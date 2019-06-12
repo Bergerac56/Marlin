@@ -377,8 +377,8 @@
   #define CASE_LIGHT_PIN P1_19              // Override the default pin if needed
   #define INVERT_CASE_LIGHT false             // Set true if Case Light is ON when pin is LOW
   #define CASE_LIGHT_DEFAULT_ON true          // Set default power-up state on
-  #define CASE_LIGHT_DEFAULT_BRIGHTNESS 105   // Set default power-up brightness (0-255, requires PWM pin)
-  //#define CASE_LIGHT_MENU                   // Add Case Light options to the LCD menu
+  #define CASE_LIGHT_DEFAULT_BRIGHTNESS 255   // Set default power-up brightness (0-255, requires PWM pin) // Jacbot
+  #define CASE_LIGHT_MENU                   // Add Case Light options to the LCD menu // Jacbot
   //#define CASE_LIGHT_NO_BRIGHTNESS          // Disable brightness control. Enable for non-PWM lighting.
   //#define CASE_LIGHT_USE_NEOPIXEL           // Use Neopixel LED as case light, requires NEOPIXEL_LED.
   #if ENABLED(CASE_LIGHT_USE_NEOPIXEL)
@@ -1199,7 +1199,7 @@
  * See http://marlinfw.org/docs/features/lin_advance.html for full instructions.
  * Mention @Sebastianv650 on GitHub to alert the author of any issues.
  */
-// #define LIN_ADVANCE  // TEST TEST TEST Sans doute le problème d'options multiples
+#define LIN_ADVANCE  // TEST TEST TEST Sans doute le problème d'options multiples Jacbot
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second  ance constants
   #define LIN_ADVANCE_K 1.02     // Unit: mm compression per 1mm/s (0.22 = default) extruder speed
@@ -1846,7 +1846,7 @@
    * Beta feature!
    * Create a 50/50 square wave step pulse optimal for stepper drivers.
    */
-  //#define SQUARE_WAVE_STEPPING
+  #define SQUARE_WAVE_STEPPING  // Test Jacbot avec Linear advance
 
   /**
    * Enable M122 debugging command for TMC stepper drivers.

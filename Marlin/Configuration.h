@@ -81,7 +81,7 @@
 // build by the user have been successfully uploaded into firmware.
 #define STRING_CONFIG_H_AUTHOR "O. de Broqueville" // Who made the changes.
 #define SHOW_BOOTSCREEN
-#define STRING_SPLASH_LINE1 "V2 BF170 06-06-2019" // will be shown during bootup in line 1
+#define STRING_SPLASH_LINE1 "V2 BF172 12-06-2019" // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 "www.xerus.be"      // will be shown during bootup in line 2
 
 /**
@@ -145,7 +145,7 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "JacBot OdB V2 BF170   " // Jacbot
+#define CUSTOM_MACHINE_NAME "JacBot OdB V2 BF172   " // Jacbot
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -891,7 +891,7 @@
 
 #define X_PROBE_OFFSET_FROM_EXTRUDER 18  // X offset: -left  +right  [of the nozzle] Jacbot = 14
 #define Y_PROBE_OFFSET_FROM_EXTRUDER 0  // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER -1.050 // Z offset: -below +above  [the nozzle] Pour JacBot: -Haut +Bas
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -1.40 // Z offset: -below +above  [the nozzle] Pour JacBot: -Haut +Bas
 // Certain types of probes need to stay away from edges
 #define MIN_PROBE_EDGE 1 // JACBOT
 
