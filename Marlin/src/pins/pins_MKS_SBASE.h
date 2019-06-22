@@ -62,6 +62,8 @@
   #define Z_MIN_PROBE_PIN  P4_28   // Connector J8
 #endif
 
+#define FIL_RUNOUT_PIN     P1_29   //  runout filament sensotr pour Jacbot
+
 //
 // Steppers
 //
