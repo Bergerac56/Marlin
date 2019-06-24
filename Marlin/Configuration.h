@@ -81,7 +81,7 @@
 // build by the user have been successfully uploaded into firmware.
 #define STRING_CONFIG_H_AUTHOR "O. de Broqueville" // Who made the changes.
 #define SHOW_BOOTSCREEN
-#define STRING_SPLASH_LINE1 "V2 BF176 22-06-2019" // will be shown during bootup in line 1
+#define STRING_SPLASH_LINE1 "V2 BF177 24-06-2019" // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 "www.xerus.be"      // will be shown during bootup in line 2
 
 /**
@@ -145,7 +145,7 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "JacBot OdB V2 BF176   " // Jacbot
+#define CUSTOM_MACHINE_NAME "JacBot OdB V2 BF177   " // Jacbot
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
