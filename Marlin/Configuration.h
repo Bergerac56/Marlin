@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * Version JacBot OdB (Evolution de la Jacbot par O. de Broqueville)
  * Adaptation version Bugfix 2.0 New Layout
@@ -81,7 +81,7 @@
 // build by the user have been successfully uploaded into firmware.
 #define STRING_CONFIG_H_AUTHOR "O. de Broqueville" // Who made the changes.
 #define SHOW_BOOTSCREEN
-#define STRING_SPLASH_LINE1 "V2 BF177 27-06-2019" // will be shown during bootup in line 1
+#define STRING_SPLASH_LINE1 "V2 BF178 28-06-2019" // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 "www.xerus.be"      // will be shown during bootup in line 2
 
 /**
@@ -145,7 +145,7 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "JacBot OdB V2 BF177   " // Jacbot
+#define CUSTOM_MACHINE_NAME "JacBot OdB V2 BF178   " // Jacbot
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -330,8 +330,6 @@
     #define AUTO_POWER_E_FANS
     #define AUTO_POWER_CONTROLLERFAN
     #define AUTO_POWER_CHAMBER_FAN
-    //#define AUTO_POWER_E_TEMP        50 // (°C) Turn on PSU over this temperature
-    //#define AUTO_POWER_CHAMBER_TEMP  30 // (°C) Turn on PSU over this temperature
     #define POWER_TIMEOUT 30
   #endif
 
