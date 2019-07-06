@@ -1212,7 +1212,7 @@
  * See http://marlinfw.org/docs/features/lin_advance.html for full instructions.
  * Mention @Sebastianv650 on GitHub to alert the author of any issues.
  */
-#define LIN_ADVANCE  // TEST TEST TEST Sans doute le problème d'options multiples Jacbot
+//#define LIN_ADVANCE  // TEST TEST TEST Sans doute le problème d'options multiples Jacbot
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second  ance constants
   #define LIN_ADVANCE_K 1.02     // Unit: mm compression per 1mm/s (0.22 = default) extruder speed
@@ -1883,7 +1883,7 @@
    * Beta feature!
    * Create a 50/50 square wave step pulse optimal for stepper drivers.
    */
-  #define SQUARE_WAVE_STEPPING  // Test Jacbot avec Linear advance
+  //#define SQUARE_WAVE_STEPPING  // Test Jacbot avec Linear advance
 
   /**
    * Enable M122 debugging command for TMC stepper drivers.
@@ -2308,7 +2308,7 @@
   #define USER_SCRIPT_RETURN  // Return to status screen after a script
 
   #define USER_DESC_1 "Full UBL Calib ."
-  #define USER_GCODE_1 "M502\nM500\nM501\nM190 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM109 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)"\nG28\nG29 P1\nG29 S1\nG29 A\nM500\nG28\nG1 X0 Y0 F5000\nG4 S2\nM104 S0\nM140 S0\nM84"
+  #define USER_GCODE_1 "M502\nM500\nM501\nM412 S0\nM190 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM109 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)"\nG28\nG29 P1\nG29 S1\nG29 A\nM412 S1\nM500\nG28\nG1 X0 Y0 F5000\nG4 S2\nM104 S0\nM140 S0\nM84"
 
   #define USER_DESC_2 "Load PLA"
   #define USER_GCODE_2 "M109 S"  STRINGIFY(PREHEAT_1_TEMP_HOTEND)"\nG28\nG1 Z100 F5000\nG1 X0 Y105 F5000\nG21\nG90\nG92 E0\nG1 E100 F150\nG1 E99 F150\nG92 E0\nG1 X0 Y0 F5000\nG4 S2\nM104 S0\nM84"
