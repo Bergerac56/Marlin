@@ -81,7 +81,7 @@
 // build by the user have been successfully uploaded into firmware.
 #define STRING_CONFIG_H_AUTHOR "O. de Broqueville" // Who made the changes.
 #define SHOW_BOOTSCREEN
-#define STRING_SPLASH_LINE1 "V2 BF179 06-07-2019" // will be shown during bootup in line 1
+#define STRING_SPLASH_LINE1 "V2 BF179 07-07-2019" // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 "www.xerus.be"      // will be shown during bootup in line 2
 
 /**
