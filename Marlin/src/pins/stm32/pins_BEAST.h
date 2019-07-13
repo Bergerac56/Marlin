@@ -255,7 +255,7 @@
       // Beeper on AUX-4
       #define BEEPER_PIN        33
 
-      // buttons are directly attached using AUX-2
+      // buttons are directly attached to AUX-2
       #if ENABLED(REPRAPWORLD_KEYPAD)
         #define BTN_EN1         64
         #define BTN_EN2         59
@@ -284,7 +284,3 @@
   #endif // NEWPANEL
 
 #endif // HAS_SPI_LCD
-
-#define U_MIN_PIN          -1
-#define V_MIN_PIN          -1
-#define W_MIN_PIN          -1
