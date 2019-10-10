@@ -24,8 +24,6 @@
 namespace Language_fr {
   using namespace Language_en; // Inherit undefined strings from English
 
-  PROGMEM Language_Str LANGUAGE                 = u8"Français";
-
   PROGMEM Language_Str YES                      = u8"oui";
   PROGMEM Language_Str NO                       = u8"non";
   PROGMEM Language_Str BACK                     = u8"Retour";
@@ -48,7 +46,7 @@ namespace Language_fr {
   PROGMEM Language_Str ACCEL_PRINTING           = u8"A impr.";
   PROGMEM Language_Str ACCEL_TRAVEL             = u8"A dépl.";
   PROGMEM Language_Str ACCEL_RETRACT            = u8"A retrait";
-  PROGMEM Language_Str JUNCTION_DEVIATION       = u8"Déviat. jonct.";
+  PROGMEM Language_Str JUNC_DEVIATION           = u8"Déviat. jonct.";
   //PROGMEM Language_Str BACKLASH                 = u8"Backlash";
   PROGMEM Language_Str SMOOTHING                = u8"Lissage";
   PROGMEM Language_Str MOTOR_CURRENT            = u8"Courant";
