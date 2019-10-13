@@ -2506,9 +2506,10 @@
 /**
  * User-defined menu items that execute custom GCode
  */
+
 #define CUSTOM_USER_MENUS
 #if ENABLED(CUSTOM_USER_MENUS)
-  #define CUSTOM_USER_MENU_TITLE "Custom Commands"
+  //#define CUSTOM_USER_MENU_TITLE "Custom Commands"
   #define USER_SCRIPT_DONE "M117 User Script Done"
   #define USER_SCRIPT_AUDIBLE_FEEDBACK
   #define USER_SCRIPT_RETURN  // Return to status screen after a script
@@ -2528,6 +2529,9 @@
   #define USER_DESC_5 "Unload ABS"
   #define USER_GCODE_5 "M109 S"  STRINGIFY(PREHEAT_2_TEMP_HOTEND)"\nG28\nG1 Z100 F5000\nG1 X0 Y105 F5000\nG21\nG90\nG92 E0\nG1 E20 F150\nG92 E0\nG1 E-800 F4000\nG92 E0\nG1 X0 Y0 F5000\nG4 S2\nM104 S0\nM84"
 #endif
+
+
+
 
 /**
  * Host Action Commands

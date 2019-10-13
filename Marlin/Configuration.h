@@ -141,7 +141,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Jacbot OdB V2 BF188   "
+#define CUSTOM_MACHINE_NAME "Jacbot OdB V2 BF190   "
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -933,11 +933,11 @@
  *     O-- FRONT --+
  *   (0,0)
  */
-#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { 18, 0, -1.20 }
 
-#define X_PROBE_OFFSET_FROM_EXTRUDER 18  // X offset: -left  +right  [of the nozzle] Jacbot = 14
-#define Y_PROBE_OFFSET_FROM_EXTRUDER 0  // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER -1.20 // Z offset: -below +above  [the nozzle] Pour JacBot: -Haut +Bas
+//#define X_PROBE_OFFSET_FROM_EXTRUDER 18  // X offset: -left  +right  [of the nozzle] Jacbot = 14
+//#define Y_PROBE_OFFSET_FROM_EXTRUDER 0  // Y offset: -front +behind [the nozzle]
+//#define Z_PROBE_OFFSET_FROM_EXTRUDER -1.20 // Z offset: -below +above  [the nozzle] Pour JacBot: -Haut +Bas
 // Certain types of probes need to stay away from edges
 #define MIN_PROBE_EDGE 1 // JACBOT
 
