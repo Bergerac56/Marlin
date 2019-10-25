@@ -1473,8 +1473,8 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-#define MINIMUM_STEPPER_POST_DIR_DELAY 650 // Jacbot OdB
-#define MINIMUM_STEPPER_PRE_DIR_DELAY 650  // Jacbot OdB
+//#define MINIMUM_STEPPER_POST_DIR_DELAY 650 // Jacbot OdB
+//#define MINIMUM_STEPPER_PRE_DIR_DELAY 650  // Jacbot OdB
 
 /**
  * Minimum stepper driver pulse width (in µs)
@@ -1501,7 +1501,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-#define MAXIMUM_STEPPER_RATE 250000 // Jacbot
+//#define MAXIMUM_STEPPER_RATE 250000 // Jacbot
 
 // @section temperature
 
