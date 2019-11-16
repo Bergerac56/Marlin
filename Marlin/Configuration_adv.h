@@ -1363,7 +1363,7 @@
  * See http://marlinfw.org/docs/features/lin_advance.html for full instructions.
  * Mention @Sebastianv650 on GitHub to alert the author of any issues.
  */
-//#define LIN_ADVANCE  // TEST TEST TEST Sans doute le problème d'options multiples Jacbot
+#define LIN_ADVANCE  // TEST TEST TEST Sans doute le problème d'options multiples Jacbot
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second  ance constants
   #define LIN_ADVANCE_K 1.02     // Unit: mm compression per 1mm/s (0.22 = default) extruder speed
@@ -1500,7 +1500,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
- #define MINIMUM_STEPPER_PULSE 4 // Jacbot test SBASE 4
+ #define MINIMUM_STEPPER_PULSE  3 // Jacbot test SBASE 4 Test à 3
 
 /**
  * Maximum stepping rate (in Hz) the stepper driver allows
@@ -2113,7 +2113,7 @@
    * Beta feature!
    * Create a 50/50 square wave step pulse optimal for stepper drivers.
    */
-  //#define SQUARE_WAVE_STEPPING  // Test Jacbot avec Linear advance
+  //#define SQUARE_WAVE_STEPPING
 
   /**
    * Enable M122 debugging command for TMC stepper drivers.
