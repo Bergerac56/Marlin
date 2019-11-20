@@ -1383,6 +1383,7 @@
   //#define XY_DIAG_BD 282.8427124746
   //#define XY_SIDE_AD 200
 
+  // Pour Jacbot
     #define XY_DIAG_AC 142.4
     #define XY_DIAG_BD 141.4
     #define XY_SIDE_AD 100.40
