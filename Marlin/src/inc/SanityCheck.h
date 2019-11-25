@@ -245,6 +245,8 @@
   #error "NEOPIXEL_RGBW_LED is now NEOPIXEL_LED. Please update your configuration."
 #elif ENABLED(DELTA) && defined(DELTA_PROBEABLE_RADIUS)
   #error "Remove DELTA_PROBEABLE_RADIUS and use MIN_PROBE_EDGE to inset the probe area instead."
+#elif ENABLED(DELTA) && defined(DELTA_CALIBRATION_RADIUS)
+  #error "Remove DELTA_CALIBRATION_RADIUS and use MIN_PROBE_EDGE to inset the probe area instead."
 #elif defined(UBL_MESH_INSET)
   #error "UBL_MESH_INSET is now just MESH_INSET. Please update your configuration."
 #elif defined(UBL_MESH_MIN_X) || defined(UBL_MESH_MIN_Y) || defined(UBL_MESH_MAX_X) || defined(UBL_MESH_MAX_Y)
@@ -410,6 +412,8 @@
   #error "JUNCTION_DEVIATION is no longer required. (See CLASSIC_JERK). Please remove it from Configuration.h."
 #elif defined(BABYSTEP_MULTIPLICATOR)
   #error "BABYSTEP_MULTIPLICATOR is now BABYSTEP_MULTIPLICATOR_[XY|Z]. Please update Configuration_adv.h."
+#elif defined(LULZBOT_TOUCH_UI)
+  #error "LULZBOT_TOUCH_UI is now TOUCH_UI_FTDI_EVE. Please update your configuration."
 #endif
 
 #define BOARD_MKS_13        -1000
@@ -602,8 +606,8 @@ static_assert(Y_MAX_LENGTH >= Y_BED_SIZE, "Movement bounds (Y_MIN_POS, Y_MAX_POS
 /**
  * Custom Boot and Status screens
  */
-#if ENABLED(SHOW_CUSTOM_BOOTSCREEN) && !HAS_GRAPHICAL_LCD && !ENABLED(LULZBOT_TOUCH_UI)
-  #error "SHOW_CUSTOM_BOOTSCREEN requires Graphical LCD or LULZBOT_TOUCH_UI."
+#if ENABLED(SHOW_CUSTOM_BOOTSCREEN) && !HAS_GRAPHICAL_LCD && !ENABLED(TOUCH_UI_FTDI_EVE)
+  #error "SHOW_CUSTOM_BOOTSCREEN requires Graphical LCD or TOUCH_UI_FTDI_EVE."
 #elif ENABLED(CUSTOM_STATUS_SCREEN_IMAGE) && !HAS_GRAPHICAL_LCD
   #error "CUSTOM_STATUS_SCREEN_IMAGE requires a Graphical LCD."
 #endif
@@ -1920,7 +1924,7 @@ static_assert(Y_MAX_LENGTH >= Y_BED_SIZE, "Movement bounds (Y_MIN_POS, Y_MAX_POS
   + ENABLED(OVERLORD_OLED) \
   + ENABLED(DGUS_LCD) \
   + ENABLED(MALYAN_LCD) \
-  + ENABLED(LULZBOT_TOUCH_UI) \
+  + ENABLED(TOUCH_UI_FTDI_EVE) \
   + ENABLED(FSMC_GRAPHICAL_TFT)
   #error "Please select no more than one LCD controller option."
 #endif
@@ -2336,8 +2340,8 @@ static_assert(   _ARR_TEST(3,0) && _ARR_TEST(3,1) && _ARR_TEST(3,2)
   #endif
 #endif
 
-#if ENABLED(POWER_LOSS_RECOVERY) && DISABLED(ULTIPANEL)
-  #error "POWER_LOSS_RECOVERY currently requires an LCD Controller."
+#if ENABLED(BACKUP_POWER_SUPPLY) && !PIN_EXISTS(POWER_LOSS)
+  #error "BACKUP_POWER_SUPPLY requires a POWER_LOSS_PIN."
 #endif
 
 #if ENABLED(Z_STEPPER_AUTO_ALIGN)
