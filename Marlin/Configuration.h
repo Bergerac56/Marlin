@@ -7,7 +7,8 @@
  *
  * Version JacBot OdB (Evolution de la Jacbot par O. de Broqueville)
  * Adaptation version Bugfix 2.0 New Layout
- * Jacbot SBASE OdB 2.0.x
+ * Jacbot SBASE OdB 2.0.x Bugfix
+ * Jacnot SBASE OdB 2.0.x
  *
  * ATTENTION : Modifier le fichier /pins/MKS_SBASE => #define LED_PIN            -1   // LED2 P1_19, LED3 P1_20, LED4 P1_21
  *
@@ -142,7 +143,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Jacbot OdB V2 BF197   "
+#define CUSTOM_MACHINE_NAME "Jacbot OdB V2.0 V1   "
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
