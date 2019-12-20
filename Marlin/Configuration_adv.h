@@ -1552,7 +1552,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
- #define MINIMUM_STEPPER_PULSE  3 // Jacbot test SBASE 4 Test à 3
+ //#define MINIMUM_STEPPER_PULSE  3 // Jacbot test SBASE 4 Test à 3
 
 /**
  * Maximum stepping rate (in Hz) the stepper driver allows
