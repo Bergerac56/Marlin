@@ -38,7 +38,7 @@
   #define BOARD_WEBSITE_URL "github.com/makerbase-mks/MKS-SBASE"
 #endif
 
-#define LED_PIN            P1_18   // Used as a status indicator
+#define LED_PIN            -1  // Used as a status indicator
 #define LED2_PIN           P1_19
 #define LED3_PIN           P1_20
 #define LED4_PIN           P1_21
@@ -64,6 +64,8 @@
 #ifndef Z_MIN_PROBE_PIN
   #define Z_MIN_PROBE_PIN  P4_28   // Connector J8
 #endif
+
+#define FIL_RUNOUT_PIN     P1_29   //  runout filament sensor pour Jacbot
 
 //
 // Steppers
