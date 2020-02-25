@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,18 +20,22 @@
  *
  */
 
-#include "../../inc/MarlinConfig.h"
+#include "../../inc/MarlinConfigPre.h"
 
 #if HAS_RESUME_CONTINUE
 
 #include "../gcode.h"
-#include "../../module/stepper.h"
+#include "../../module/planner.h"
+
+#include "../../inc/MarlinConfig.h"
 
 #if HAS_LCD_MENU
   #include "../../lcd/ultralcd.h"
 #endif
 
-#include "../../sd/cardreader.h"
+#if ENABLED(EXTENSIBLE_UI)
+  #include "../../lcd/extensible_ui/ui_api.h"
+#endif
 
 #if HAS_LEDS_OFF_FLAG
   #include "../../feature/leds/printer_event_leds.h"
@@ -67,12 +71,19 @@ void GcodeSuite::M0_M1() {
 
     if (has_message)
       ui.set_status(args, true);
-    else {
+    else if (!parser.seenval('Q')) {
       LCD_MESSAGEPGM(MSG_USERWAIT);
       #if ENABLED(LCD_PROGRESS_BAR) && PROGRESS_MSG_EXPIRE > 0
         ui.reset_progress_bar_timeout();
       #endif
     }
+
+  #elif ENABLED(EXTENSIBLE_UI)
+
+    if (has_message)
+      ExtUI::onUserConfirmRequired(args); // Can this take an SRAM string??
+    else
+      ExtUI::onUserConfirmRequired_P(GET_TEXT(MSG_USERWAIT));
 
   #else
 
@@ -87,15 +98,11 @@ void GcodeSuite::M0_M1() {
   wait_for_user = true;
 
   #if ENABLED(HOST_PROMPT_SUPPORT)
-    host_prompt_do(PROMPT_USER_CONTINUE, PSTR("M0/1 Break Called"), PSTR("Continue"));
+    host_prompt_do(PROMPT_USER_CONTINUE, PSTR("M0/1 Break Called"), CONTINUE_STR);
   #endif
 
-  if (ms > 0) {
-    ms += millis();  // wait until this time for a click
-    while (PENDING(millis(), ms) && wait_for_user) idle();
-  }
-  else
-    while (wait_for_user) idle();
+  if (ms > 0) ms += millis();  // wait until this time for a click
+  while (wait_for_user || (ms > 0 && PENDING(millis(), ms))) idle();
 
   #if HAS_LEDS_OFF_FLAG
     printerEventLEDs.onResumeAfterWait();
@@ -106,7 +113,6 @@ void GcodeSuite::M0_M1() {
   #endif
 
   wait_for_user = false;
-  KEEPALIVE_STATE(IN_HANDLER);
 }
 
 #endif // HAS_RESUME_CONTINUE
