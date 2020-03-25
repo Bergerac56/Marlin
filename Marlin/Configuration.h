@@ -974,11 +974,11 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { 18, 0, -1.20 } // Jacbot
+#define NOZZLE_TO_PROBE_OFFSET { 20, 2, -1.20 } // Jacbot
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define MIN_PROBE_EDGE 1 // Jacbot
+#define MIN_PROBE_EDGE 0 // Jacbot
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 8000
@@ -1110,8 +1110,8 @@
 // @section machine
 
 // The size of the print bed Jacbot
-#define X_BED_SIZE 310
-#define Y_BED_SIZE 210
+#define X_BED_SIZE 300
+#define Y_BED_SIZE 200
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1521,7 +1521,8 @@
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
-  #define NOZZLE_PARK_POINT { (X_MIN_POS + 10), (Y_MIN_POS - 10), 20 }
+  //#define NOZZLE_PARK_POINT { (X_MIN_POS + 10), (Y_MIN_POS - 10), 20 }
+  #define NOZZLE_PARK_POINT { 0, 0, 20 } // Adaptation temporaire pour test change filament Jacbot
   #define NOZZLE_PARK_XY_FEEDRATE 100   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
   #define NOZZLE_PARK_Z_FEEDRATE 5      // (mm/s) Z axis feedrate (not used for delta printers)
 #endif
