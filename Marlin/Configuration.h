@@ -139,7 +139,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Jacbot OdB V2-BF215   "
+#define CUSTOM_MACHINE_NAME "Jacbot OdB V2-BF216   "
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -1418,7 +1418,7 @@
  *    +-------------->X     +-------------->X     +-------------->Y
  *     XY_SKEW_FACTOR        XZ_SKEW_FACTOR        YZ_SKEW_FACTOR
  */
-#define SKEW_CORRECTION
+#define SKEW_CORRECTION // Jacbot
 
 #if ENABLED(SKEW_CORRECTION)
   // Input all length measurements here:
@@ -1427,13 +1427,13 @@
   //#define XY_SIDE_AD 200
 
   // Pour Jacbot
-    #define XY_DIAG_AC 142.4
-    #define XY_DIAG_BD 141.4
-    #define XY_SIDE_AD 100.40
+    #define XY_DIAG_AC 141.54
+    #define XY_DIAG_BD 141.79
+    #define XY_SIDE_AD 100.03
 
   // Or, set the default skew factors directly here
   // to override the above measurements:
-  #define XY_SKEW_FACTOR 0.0
+  //#define XY_SKEW_FACTOR 0.0 // Jacbot
 
   //#define SKEW_CORRECTION_FOR_Z
   #if ENABLED(SKEW_CORRECTION_FOR_Z)
@@ -1447,7 +1447,7 @@
   #endif
 
   // Enable this option for M852 to set skew at runtime
-  //#define SKEW_CORRECTION_GCODE
+  #define SKEW_CORRECTION_GCODE  // Jacbot
 #endif
 
 //=============================================================================
