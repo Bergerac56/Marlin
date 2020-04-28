@@ -38,17 +38,10 @@
   #define BOARD_WEBSITE_URL "github.com/makerbase-mks/MKS-SBASE"
 #endif
 
-//
-// EEPROM
-//
-#if NONE(FLASH_EEPROM_EMULATION, SDCARD_EEPROM_EMULATION)
-  #define FLASH_EEPROM_EMULATION
-  //#define SDCARD_EEPROM_EMULATION
-#endif
-#define LED_PIN            -1  // Used as a status indicator
-#define LED2_PIN           P1_19
-#define LED3_PIN           P1_20
-#define LED4_PIN           P1_21
+#define LED_PIN                            P1_18  // Used as a status indicator
+#define LED2_PIN                           P1_19
+#define LED3_PIN                           P1_20
+#define LED4_PIN                           P1_21
 
 //
 // Servos
