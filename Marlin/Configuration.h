@@ -139,7 +139,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Jacbot OdB V2-BF223   "
+#define CUSTOM_MACHINE_NAME "Jacbot OdB V2-BF225   "
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -500,9 +500,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.0 }
     #define DEFAULT_Kd_LIST { 114.00, 112.0 }
   #else
-    #define DEFAULT_Kp  22.20
-    #define DEFAULT_Ki   1.08
-    #define DEFAULT_Kd 114.00
+    #define DEFAULT_Kp  28.73  // Jacbot autotune
+    #define DEFAULT_Ki   1.70
+    #define DEFAULT_Kd 121.40
   #endif
 #endif // PIDTEMP
 
