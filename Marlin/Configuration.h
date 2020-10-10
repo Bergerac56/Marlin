@@ -41,7 +41,6 @@
  * - Extra features
  *
  * Advanced settings can be found in Configuration_adv.h
- *
  */
 #define CONFIGURATION_H_VERSION 020007
 
@@ -494,12 +493,13 @@
   //#define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
+
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify between 1 and HOTENDS values per array.
     // If fewer than EXTRUDER values are provided, the last element will be repeated.
-    #define DEFAULT_Kp_LIST {  22.20,  20.0 }
-    #define DEFAULT_Ki_LIST {   1.08,   1.0 }
-    #define DEFAULT_Kd_LIST { 114.00, 112.0 }
+    #define DEFAULT_Kp_LIST {  22.20,  22.20 }
+    #define DEFAULT_Ki_LIST {   1.08,   1.08 }
+    #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
     #define DEFAULT_Kp  28.73  // Jacbot autotune
     #define DEFAULT_Ki   1.70
@@ -868,7 +868,6 @@
  *    - For simple switches connect...
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
- *
  */
 //#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
 
@@ -1586,7 +1585,6 @@
  *
  *   Caveats: The ending Z should be the same as starting Z.
  * Attention: EXPERIMENTAL. G-code arguments may change.
- *
  */
 //#define NOZZLE_CLEAN_FEATURE
 
@@ -1739,7 +1737,6 @@
  *
  * SD Card support is disabled by default. If your controller has an SD slot,
  * you must uncomment the following option or it won't work.
- *
  */
 #define SDSUPPORT // Jacbot
 
@@ -2327,9 +2324,6 @@
 // then the BLUE led is on. Otherwise the RED led is on. (1C hysteresis)
 //#define TEMP_STAT_LEDS
 
-// SkeinForge sends the wrong arc G-codes when using Arc Point as fillet procedure
-//#define SF_ARC_FIX
-
 // Support for the BariCUDA Paste Extruder
 //#define BARICUDA
 
@@ -2362,7 +2356,6 @@
  * *** CAUTION ***
  *
  * LED Type. Enable only one of the following two options.
- *
  */
 #define RGB_LED // Jacbot SBASE
 //#define RGBW_LED
@@ -2417,16 +2410,11 @@
 #endif
 
 /**
- * R/C SERVO support
- * Sponsored by TrinityLabs, Reworked by codexmas
- */
-
-/**
  * Number of servos
  *
  * For some servo-related options NUM_SERVOS will be set automatically.
  * Set this manually if there are extra servos needing manual control.
- * Leave undefined or set to 0 to entirely disable the servo subsystem.
+ * Set to 0 to turn off servo support.
  */
 //#define NUM_SERVOS 3 // Servo index starts with 0 for M280 command
 
@@ -2438,5 +2426,5 @@
 // Only power servos during movement, otherwise leave off to prevent jitter
 //#define DEACTIVATE_SERVOS_AFTER_MOVE
 
-// Allow servo angle to be edited and saved to EEPROM
+// Edit servo angles with M281 and save to EEPROM with M500
 //#define EDITABLE_SERVO_ANGLES
