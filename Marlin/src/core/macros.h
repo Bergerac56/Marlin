@@ -170,7 +170,7 @@
 #define _DO_12(W,C,A,V...) (_##W##_1(A) C _DO_11(W,C,V))
 #define __DO_N(W,C,N,V...) _DO_##N(W,C,V)
 #define _DO_N(W,C,N,V...)  __DO_N(W,C,N,V)
-#define DO(W,C,V...)       _DO_N(W,C,NUM_ARGS(V),V)
+#define DO(W,C,V...)       (_DO_N(W,C,NUM_ARGS(V),V))
 
 // Macros to support option testing
 #define _CAT(a,V...) a##V
@@ -186,6 +186,7 @@
 #define _DIS_1(O)           NOT(_ENA_1(O))
 #define ENABLED(V...)       DO(ENA,&&,V)
 #define DISABLED(V...)      DO(DIS,&&,V)
+#define COUNT_ENABLED(V...) DO(ENA,+,V)
 
 #define _ARGS(...)          __VA_ARGS__
 #define _STRIP_PARENS(X)    X
@@ -204,6 +205,7 @@
 #define ALL(V...)           ENABLED(V)
 #define BOTH(V1,V2)         ALL(V1,V2)
 #define EITHER(V1,V2)       ANY(V1,V2)
+#define MANY(V...)          (COUNT_ENABLED(V) > 1)
 
 // Macros to support pins/buttons exist testing
 #define PIN_EXISTS(PN)      (defined(PN##_PIN) && PN##_PIN >= 0)
