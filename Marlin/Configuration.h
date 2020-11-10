@@ -139,7 +139,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Jacbot OdB V2-BF232    "
+#define CUSTOM_MACHINE_NAME "Jacbot OdB V2-BF233    "
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -1260,8 +1260,8 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-#define AUTO_BED_LEVELING_BILINEAR  // Test Jacbot
-//#define AUTO_BED_LEVELING_UBL // Jacbot
+//#define AUTO_BED_LEVELING_BILINEAR  // Test Jacbot
+#define AUTO_BED_LEVELING_UBL // Jacbot
 //#define MESH_BED_LEVELING
 
 /**
