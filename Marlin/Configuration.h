@@ -139,7 +139,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Jacbot OdB V2-BF240  "
+#define CUSTOM_MACHINE_NAME "Jacbot OdB V2-BF241  "
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -750,7 +750,7 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.19,79.00, 812, 92.5} // Pour A4988
- #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.38,158, 1624, 180} // Pour DVR8825 Origine 200
+ #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.38,158, 1624, 200} // Pour DVR8825 Origine 200
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
