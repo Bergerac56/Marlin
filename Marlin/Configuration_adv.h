@@ -116,6 +116,12 @@
   #define CHAMBER_BETA                 3950    // Beta value
 #endif
 
+#if TEMP_SENSOR_COOLER == 1000
+  #define COOLER_PULLUP_RESISTOR_OHMS 4700    // Pullup resistor
+  #define COOLER_RESISTANCE_25C_OHMS  100000  // Resistance at 25C
+  #define COOLER_BETA                 3950    // Beta value
+#endif
+
 #if TEMP_SENSOR_PROBE == 1000
   #define PROBE_PULLUP_RESISTOR_OHMS   4700    // Pullup resistor
   #define PROBE_RESISTANCE_25C_OHMS    100000  // Resistance at 25C
@@ -179,6 +185,25 @@
     #define LOW_EXCESS_HEAT_LIMIT  3
     #define MIN_COOLING_SLOPE_TIME_CHAMBER_VENT 20
     #define MIN_COOLING_SLOPE_DEG_CHAMBER_VENT 1.5
+  #endif
+#endif
+
+//
+// Laser Cooler options
+//
+#if TEMP_SENSOR_COOLER
+  #define COOLER_MINTEMP           8  // (°C)
+  #define COOLER_MAXTEMP          26  // (°C)
+  #define COOLER_DEFAULT_TEMP     16  // (°C)
+  #define TEMP_COOLER_HYSTERESIS   1  // (°C) Temperature proximity considered "close enough" to the target
+  #define COOLER_PIN               8  // Laser cooler on/off pin used to control power to the cooling element e.g. TEC, External chiller via relay
+  #define COOLER_INVERTING     false
+  #define TEMP_COOLER_PIN         15  // Laser/Cooler temperature sensor pin. ADC is required.
+  #define COOLER_FAN                  // Enable a fan on the cooler, Fan# 0,1,2,3 etc.
+  #define COOLER_FAN_INDEX         0  // FAN number 0, 1, 2 etc. e.g.
+  #if ENABLED(COOLER_FAN)
+    #define COOLER_FAN_BASE      100  // Base Cooler fan PWM (0-255); turns on when Cooler temperature is above the target
+    #define COOLER_FAN_FACTOR     25  // PWM increase per °C above target
   #endif
 #endif
 
@@ -249,6 +274,20 @@
    */
   #define WATCH_CHAMBER_TEMP_PERIOD            60 // Seconds
   #define WATCH_CHAMBER_TEMP_INCREASE           2 // Degrees Celsius
+#endif
+
+/**
+ * Thermal Protection parameters for the laser cooler.
+ */
+#if ENABLED(THERMAL_PROTECTION_COOLER)
+  #define THERMAL_PROTECTION_COOLER_PERIOD    10 // Seconds
+  #define THERMAL_PROTECTION_COOLER_HYSTERESIS 3 // Degrees Celsius
+
+  /**
+   * Laser cooling watch settings (M143/M193).
+   */
+  #define WATCH_COOLER_TEMP_PERIOD            60 // Seconds
+  #define WATCH_COOLER_TEMP_INCREASE           3 // Degrees Celsius
 #endif
 
 #if ENABLED(PIDTEMP)
@@ -496,11 +535,15 @@
 #define E6_AUTO_FAN_PIN -1
 #define E7_AUTO_FAN_PIN -1
 #define CHAMBER_AUTO_FAN_PIN -1
+#define COOLER_AUTO_FAN_PIN -1
+#define COOLER_FAN_PIN -1
 
 #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
 #define EXTRUDER_AUTO_FAN_SPEED 255   // 255 == full speed
 #define CHAMBER_AUTO_FAN_TEMPERATURE 30
 #define CHAMBER_AUTO_FAN_SPEED 255
+#define COOLER_AUTO_FAN_TEMPERATURE 18
+#define COOLER_AUTO_FAN_SPEED 255
 
 /**
  * Part-Cooling Fan Multiplexer
@@ -1497,6 +1540,8 @@
   #define STATUS_HOTEND_ANIM          // Use a second bitmap to indicate hotend heating
   #define STATUS_BED_ANIM             // Use a second bitmap to indicate bed heating
   #define STATUS_CHAMBER_ANIM         // Use a second bitmap to indicate chamber heating
+  //#define STATUS_CUTTER_ANIM        // Use a second bitmap to indicate spindle / laser active
+  //#define STATUS_COOLER_ANIM        // Use a second bitmap to indicate laser cooling
   //#define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
   //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
   //#define STATUS_FAN_FRAMES 4       // :[0,1,2,3,4] Number of fan animation frames
@@ -3332,7 +3377,9 @@
   //#define GCODE_QUOTED_STRINGS  // Support for quoted string parameters
 #endif
 
-//#define MEATPACK                // Support for MeatPack G-code compression (https://github.com/scottmudge/OctoPrint-MeatPack)
+// Support for MeatPack G-code compression (https://github.com/scottmudge/OctoPrint-MeatPack)
+//#define MEATPACK_ON_SERIAL_PORT_1
+//#define MEATPACK_ON_SERIAL_PORT_2
 
 //#define GCODE_CASE_INSENSITIVE  // Accept G-code sent to the firmware in lowercase
 
@@ -3379,7 +3426,7 @@
 //#define CUSTOM_USER_BUTTONS
 #if ENABLED(CUSTOM_USER_BUTTONS)
   //#define BUTTON1_PIN -1
-  #if PIN_EXISTS(BUTTON1_PIN)
+  #if PIN_EXISTS(BUTTON1)
     #define BUTTON1_HIT_STATE     LOW       // State of the triggered button. NC=LOW. NO=HIGH.
     #define BUTTON1_WHEN_PRINTING false     // Button allowed to trigger during printing?
     #define BUTTON1_GCODE         "G28"
@@ -3387,7 +3434,7 @@
   #endif
 
   //#define BUTTON2_PIN -1
-  #if PIN_EXISTS(BUTTON2_PIN)
+  #if PIN_EXISTS(BUTTON2)
     #define BUTTON2_HIT_STATE     LOW
     #define BUTTON2_WHEN_PRINTING false
     #define BUTTON2_GCODE         "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
@@ -3395,7 +3442,7 @@
   #endif
 
   //#define BUTTON3_PIN -1
-  #if PIN_EXISTS(BUTTON3_PIN)
+  #if PIN_EXISTS(BUTTON3)
     #define BUTTON3_HIT_STATE     LOW
     #define BUTTON3_WHEN_PRINTING false
     #define BUTTON3_GCODE         "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
@@ -3414,16 +3461,21 @@
   #define USER_SCRIPT_DONE "M117 User Script Done"
   #define USER_SCRIPT_AUDIBLE_FEEDBACK
   #define USER_SCRIPT_RETURN  // Return to status screen after a script
+  #define CUSTOM_MENU_ONLY_IDLE   // Only show custom menu when the machine is idle
 
   #define USER_DESC_1 "Cool + Stop Motors"
   #define USER_GCODE_1 "M84\nM104 S0\nM140 S0\nM107"
+  //#define USER_CONFIRM_1        // Show a confirmation dialog before this action
 
   #define USER_DESC_2 "UBL Calibration"
   #define USER_GCODE_2 "M412 S0\nM501\nM412 S0\nM190 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM109 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)"\nG28\nG29 P1\nG29 P3\nG29 A\nM412 S1\nM500\nM412 S0\nG1 X0 Y0 F5000\nG4 S2\nM104 S0\nM140 S0\nM84\nM412 S1"
+  //#define USER_CONFIRM_2
 
   //#define USER_DESC_2 "Bilinear Leveling"
   //#define USER_GCODE_2 "M412 S0\nM109 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND) "\nG28\nG29\nM420 S1\nM104 S0\nG1 F5000 X0 Y0\nM412 S1"
+  #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
 
+  //#define USER_CONFIRM_4
 
   //#define USER_DESC_2 "Load PLA"
   //#define USER_GCODE_2 "M109 S"  STRINGIFY(PREHEAT_1_TEMP_HOTEND)"\nG28\nG1 Z100 F5000\nG1 X0 Y105 F5000\nG21\nG90\nG92 E0\nG1 E100 F150\nG1 E99 F150\nG92 E0\nG1 X0 Y0 F5000\nG4 S2\nM104 S0\nM84\nM405\nM412 S1"
@@ -3436,6 +3488,7 @@
 
   //#define USER_DESC_5 "Unload ABS"
   //#define USER_GCODE_5 "M412 S0\nM109 S"  STRINGIFY(PREHEAT_2_TEMP_HOTEND)"\nG28\nG1 Z100 F5000\nG1 X0 Y105 F5000\nG21\nG90\nG92 E0\nG1 E20 F150\nG92 E0\nG1 E-800 F4000\nG92 E0\nG1 X0 Y0 F5000\nG4 S2\nM104 S0\nM84"
+  //#define USER_CONFIRM_5
 #endif
 
 /**
