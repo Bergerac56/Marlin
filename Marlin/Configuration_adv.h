@@ -3437,22 +3437,21 @@
  */
 
 // Custom Menu: Main Menu
-//#define CUSTOM_MENU_MAIN
-#if ENABLED(CUSTOM_MENU_MAIN)
-  //#define CUSTOM_MENU_MAIN_TITLE "Custom Commands"
+#define CUSTOM_MENU_MAIN
+##if ENABLED(CUSTOM_MENU_MAIN)
+  #define CUSTOM_MENU_MAIN_TITLE "Custom Commands"
   #define CUSTOM_MENU_MAIN_SCRIPT_DONE "M117 User Script Done"
   #define CUSTOM_MENU_MAIN_SCRIPT_AUDIBLE_FEEDBACK
-  //#define CUSTOM_MENU_MAIN_SCRIPT_RETURN   // Return to status screen after a script
+  #define CUSTOM_MENU_MAIN_SCRIPT_RETURN   // Return to status screen after a script
   #define CUSTOM_MENU_MAIN_ONLY_IDLE         // Only show custom menu when the machine is idle
 
-  #define MAIN_MENU_ITEM_1_DESC "Home & UBL Info"
-  #define MAIN_MENU_ITEM_1_GCODE "G28\nG29 W"
+  #define MAIN_MENU_ITEM_1_DESC "Cool + Stop Motors"
+  #define MAIN_MENU_ITEM_1_GCODE "M84\nM104 S0\nM140 S0\nM107"
   //#define MAIN_MENU_ITEM_1_CONFIRM          // Show a confirmation dialog before this action
 
-  #define MAIN_MENU_ITEM_2_DESC "Preheat for " PREHEAT_1_LABEL
-  #define MAIN_MENU_ITEM_2_GCODE "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
+  #define MAIN_MENU_ITEM_2_DESC "UBL Calibration"
+  #define MAIN_MENU_ITEM_2_GCODE "M412 S0\nM501\nM412 S0\nM190 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM109 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)"\nG28\nG29 P1\nG29 P3\nG29 A\nM412 S1\nM500\nM412 S0\nG1 X0 Y0 F5000\nG4 S2\nM104 S0\nM140 S0\nM84\nM412 S1"
   //#define MAIN_MENU_ITEM_2_CONFIRM
-
   //#define MAIN_MENU_ITEM_3_DESC "Preheat for " PREHEAT_2_LABEL
   //#define MAIN_MENU_ITEM_3_GCODE "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
   //#define MAIN_MENU_ITEM_3_CONFIRM
